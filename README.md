@@ -54,68 +54,6 @@
 
 不受影响的实体：掉落物、箭、船、矿车等非生物实体。
 
-## 从源码构建
-
-需要 **JDK 21**。
-
-```bash
-./gradlew build
-```
-
-产物位于 `build/libs/bydalc-1.0.0.jar`。
-
-常用开发命令：
-
-```bash
-./gradlew runClient   # 启动开发客户端
-./gradlew runServer   # 启动开发服务端
-```
-
-> `gradle/wrapper/gradle-wrapper.properties` 里的分发地址指向了腾讯云镜像（`mirrors.cloud.tencent.com`）。如果你的网络能直连 `services.gradle.org`，可以自行改回官方地址。
-
-## 项目结构
-
-```
-src/main/java/com/bydalc/
-├── BydalcMod.java                          模组入口，注册与事件挂载
-├── JellyClientState.java                   客户端保存的「正在播放的唱片机」与 10 格范围判定
-├── client/
-│   └── JellyVisuals.java                   果冻变换的数学部分
-├── event/
-│   └── JellyJukeboxTracker.java            服务端跟踪正在播放的唱片机并同步给客户端
-├── mixin/
-│   └── EntityRenderDispatcherMixin.java    把变换包在实体渲染调用两侧
-├── network/
-│   └── JellyNetwork.java                   自定义网络包（唱片机坐标列表）
-└── registry/
-    ├── ModItems.java                       唱片物品 + 唱片曲目注册键
-    └── ModSounds.java                      音效注册
-
-src/main/resources/
-├── META-INF/neoforge.mods.toml
-├── bydalc.mixins.json
-├── assets/bydalc/                        语言、模型、贴图、音效
-└── data/bydalc/                          唱片曲目与合成配方
-```
-
-## 调整手感
-
-没有配置文件，参数都在 [JellyVisuals.java](src/main/java/com/bydalc/client/JellyVisuals.java) 顶部：
-
-```java
-private static final float  SPIN_DEGREES_PER_TICK     = 15.0F; // 旋转速度，15 = 1.2 秒一圈
-private static final double WOBBLE_RADIANS_PER_TICK   = 0.45D; // 伸缩频率，约 0.7 秒一个来回
-private static final float  STRETCH                   = 0.35F; // 垂直拉伸幅度
-private static final float  SQUASH                    = 0.22F; // 水平收缩幅度
-private static final float  BOUNCE                    = 0.15F; // 弹跳高度（格）
-```
-
-作用半径在 [JellyClientState.java](src/main/java/com/bydalc/JellyClientState.java)：
-
-```java
-private static final double RANGE_SQR = 10.0D * 10.0D; // 半径 10 格
-```
-
 ## 许可证
 
 本项目采用 **GNU General Public License v3.0**，完整协议见 [LICENSE](LICENSE)。
