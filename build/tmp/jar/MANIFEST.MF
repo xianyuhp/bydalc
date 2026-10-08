@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: bydalc
+Specification-Vendor: Xyu_Fox
+Specification-Version: 1
+Implementation-Title: bydalc
+Implementation-Version: 1.0.0
+Implementation-Vendor: Xyu_Fox
+MixinConfigs: bydalc.mixins.json
+

@@ -1,0 +1,10 @@
+{
+  "bangyou_de_jiu": {
+    "sounds": [
+      {
+        "name": "bydalc:bangyou_de_jiu",
+        "stream": true
+      }
+    ]
+  }
+}

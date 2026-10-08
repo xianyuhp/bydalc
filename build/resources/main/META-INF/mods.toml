@@ -1,0 +1,26 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "GPL-3.0-only"
+
+[[mods]]
+modId = "bydalc"
+version = "1.0.0"
+displayName = "通透了"
+authors = "Xyu_Fox"
+description = '''
+Adds a music disc. While it plays, every creature within 10 blocks - including bosses and players - wobbles and stretches like jelly and spins around 360 degrees, without moving the camera.
+'''
+
+[[dependencies.bydalc]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.bydalc]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.21)"
+ordering = "NONE"
+side = "BOTH"

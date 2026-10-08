@@ -1,16 +1,17 @@
 pluginManagement {
     repositories {
-        mavenCentral()
         gradlePluginPortal()
         maven {
-            name = 'NeoForged'
-            url = 'https://maven.neoforged.net/releases'
+            name = 'MinecraftForge'
+            url = 'https://maven.minecraftforge.net/'
+        }
+        maven {
+            name = 'Sponge'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
         }
     }
 }
 
-plugins {
-    id 'org.gradle.toolchains.foojay-resolver-convention' version '0.8.0'
-}
-
-rootProject.name = 'jelly-disc'
+// 1.20.1 需要 JDK 17。这里不引入 foojay 工具链自动下载插件，请自行安装 JDK 17
+// 并让 Gradle 能找到它（设置 JAVA_HOME，或放在 ~/.jdks 下）。
+rootProject.name = 'bydalc'

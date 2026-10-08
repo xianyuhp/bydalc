@@ -4,24 +4,31 @@ import com.bydalc.event.JellyJukeboxTracker;
 import com.bydalc.network.JellyNetwork;
 import com.bydalc.registry.ModItems;
 import com.bydalc.registry.ModSounds;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.common.NeoForge;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(BydalcMod.MODID)
 public final class BydalcMod {
     public static final String MODID = "bydalc";
 
-    public BydalcMod(IEventBus modEventBus) {
+    public BydalcMod() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, JellyConfig.SPEC);
+
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        modEventBus.addListener(JellyConfig::onConfigChanged);
+
         ModSounds.SOUNDS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
-        modEventBus.addListener(JellyNetwork::register);
+        JellyNetwork.register();
         modEventBus.addListener(ModItems::addToCreativeTab);
 
-        IEventBus gameBus = NeoForge.EVENT_BUS;
+        IEventBus gameBus = MinecraftForge.EVENT_BUS;
         gameBus.addListener(JellyJukeboxTracker::onGameEvent);
         gameBus.addListener(JellyJukeboxTracker::onServerTick);
         gameBus.addListener(JellyJukeboxTracker::onServerStopped);
-
     }
 }

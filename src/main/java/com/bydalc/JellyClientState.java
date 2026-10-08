@@ -13,8 +13,6 @@ import net.minecraft.world.phys.Vec3;
  * Contains no client-only types so it can safely be loaded on either side.
  */
 public final class JellyClientState {
-    private static final double RANGE_SQR = 10.0D * 10.0D;
-
     private static List<BlockPos> jukeboxes = List.of();
     private static Level trackedLevel;
 
@@ -45,9 +43,10 @@ public final class JellyClientState {
         }
         trackedLevel = level;
 
+        double rangeSqr = JellyConfig.rangeSqr;
         AABB box = entity.getBoundingBox();
         for (BlockPos pos : jukeboxes) {
-            if (box.distanceToSqr(Vec3.atCenterOf(pos)) <= RANGE_SQR) {
+            if (box.distanceToSqr(Vec3.atCenterOf(pos)) <= rangeSqr) {
                 return true;
             }
         }
