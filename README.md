@@ -1,4 +1,4 @@
-# 通透了
+# 邦友的酒
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-1.21.1-3C8527)
 ![NeoForge](https://img.shields.io/badge/NeoForge-21.1.77-E8843C)
@@ -9,7 +9,7 @@
 
 把它塞进唱片机，半径 10 格内的**所有生物**都会原地上下拉伸、像果冻一样 Q 弹，并且持续 360° 旋转 —— 包括玩家本人。整个效果是纯客户端渲染，不会挪动实体、也不会动你的视角。
 
-- 模组名：通透了
+- 模组名：邦友的酒
 - 模组 ID：`bydalc`
 - 作者：Xyu_Fox
 - 许可：GPL-3.0
