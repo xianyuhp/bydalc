@@ -6,6 +6,7 @@
 ![Version](https://img.shields.io/badge/Version-1.0.0-lightgrey)
 
 > 这是 **Minecraft 1.20.1 / Forge** 分支。1.21.1 / NeoForge 版本见 [`main`](../../tree/main) 分支。
+这个版本是临时起意,所有故不做维护。
 
 ## 许可证
 
